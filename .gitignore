@@ -75,6 +75,8 @@ Temporary Items
 ### NodeJS ###
 
 node_modules
+.cache
+.parcel-cache
 
 ### Python ###
 
