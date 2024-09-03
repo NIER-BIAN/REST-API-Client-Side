@@ -1,4 +1,4 @@
-// use props to pass data from a component’s state to one of its children
+// This component accepts data from the parent component's (MainView's) state via props
 // props allows tinkering with parent and child independently
 // as long as parent passes on all props expected by the child
 
@@ -6,19 +6,30 @@
 export const MovieView = ({ movieViewContent, onBackClick }) => {
     return (
 	<div>
+	    
+	    <h1>{movieViewContent.title}</h1>
+	    
+	    <br/>
+	    
+	    <div>Director: {movieViewContent.director.name}</div>
+	    
+	    <br/>
+	    
+	    <div>{movieViewContent.director.bio}</div>
+	    
+	    <br/>
+	    
+	    <div>Genre: {movieViewContent.genre.name}</div>
+
+	    <br/>
+
+	    <div>{movieViewContent.genre.description}</div>
+	    
+	    <br/>
+	    <br/>
+
 	    <button onClick={onBackClick}>Back</button>
-	    <div>
-		<span>Title: </span>
-		<span>{movieViewContent.title}</span>
-	    </div>
-	    <div>
-		<span>Director: </span>
-		<span>{movieViewContent.director}</span>
-	    </div>
-	    <div>
-		<span>Genre: </span>
-		<span>{movieViewContent.genre}</span>
-	    </div>
+	    
 	</div>
     );
 };
