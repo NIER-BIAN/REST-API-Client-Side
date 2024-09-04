@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -15,33 +15,42 @@ export const MainView = () => {
     // syntax: [stateVar, setStateVar] = useState(initialConditions)
     // useState returns an array with 2 elements: the state var and func to update this state var
     const [selectedMovie, updateSelectedMovie] = useState(null);
-    const [movieList, updateMovieList] = useState([
-
-	{
-	    oid: "6685570bf67a085dc3261cd1",
-	    title: "Amélie",
-	    director: "Jean-Pierre Jeunet",
-	    genre: "Romantic Comedy",
-	},
-
-	{
-	    oid: "6685570bf67a085dc3261cd2",
-	    title: "Interstellar",
-	    director: "Christopher Nolan",
-	    genre: "Science Fiction",
-	},
-
-	{
-	    oid: "6685570bf67a085dc3261cd3",
-	    title: "Pride & Prejudice",
-	    director: "Joe Wright",
-	    genre: "Drama",
-	},
-    ]);
+    const [movieList, updateMovieList] = useState([]);
     // currentStateVar now holds the initial list
     // in case of state changes (e.g. more movies are added or removed)
     // React will REACT / auto-re-render component with the updated state
 
+    // Hook that allows the performing of side effects
+    // code for performing async tasks (fetch from API) or event listeners (key bindings) go here
+    useEffect(
+	// arg 1: code you want to run as a side effect
+	() => {
+	    fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/movies")
+		.then(
+		    (response) => response.json()
+		)
+		.then(
+		    (data) => {
+			
+			const dataFromApi = data.map((doc) => {
+			    return {
+				id: doc._id,
+				title: doc.title,
+				director: doc.director,
+				genre: doc.genre,
+			    };
+			});
+			
+			updateMovieList(dataFromApi);
+		    }
+		);
+	}, 
+	// arg 2: array of dependencies. When dependencies change, the effect will re-run.
+	// empty array = the effect will only run once after the initial render
+	// callback doesn’t depend on any value changes in props or state
+	[]
+    );
+    
     // 2. UI rendering: MainView's UI is then dynamically adjusted based on currentStateVar
 
     // in case of empty list
@@ -74,7 +83,7 @@ export const MainView = () => {
 	<div>
 	    {movieList.map((movie) => (
 		<MovieCard
-		    key={movie.oid}
+		    key={movie.id}
 		    movieCardContent={movie}
 		    onMovieClick={(newSelectedMovie) => {
 			updateSelectedMovie(newSelectedMovie);
