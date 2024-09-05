@@ -16,7 +16,7 @@ export const SignupView = () => {
 	    password: password,
 	};
 
-	fetch("SIGNUP_URL", {
+	fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/users", {
 	    method: "POST",
 	    body: JSON.stringify(data),
 	    headers: {
