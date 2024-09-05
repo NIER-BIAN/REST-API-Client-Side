@@ -1,5 +1,8 @@
 import React from "react";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 export const LoginView = ({ onLoggedIn }) => {
 
     const [username, updateUsername] = React.useState("");
@@ -52,20 +55,20 @@ export const LoginView = ({ onLoggedIn }) => {
 	// password: K39eKYhPMV9DDWhJ
 	
 	const data = {
-	    access: username,
-	    secret: password
+	access: username,
+	secret: password
 	};
 	
 	fetch("https://openlibrary.org/account/login.json", {
-	    method: "POST",
-	    body: JSON.stringify(data)
+	method: "POST",
+	body: JSON.stringify(data)
 	}).then((response) => {
-	    if (response.ok) {
-		// notify MainView that login was successful and send back user
-		onLoggedIn(username);
-	    } else {
-		alert("Login failed");
-	    }
+	if (response.ok) {
+	// notify MainView that login was successful and send back user
+	onLoggedIn(username);
+	} else {
+	alert("Login failed");
+	}
 	});*/
     }
 
@@ -74,11 +77,11 @@ export const LoginView = ({ onLoggedIn }) => {
 	// when JSX forms are defined
 	// we can attach an event handler to the onSubmit event
 	// the event handler is func (see above) that takes event obj as parameter
-	<form onSubmit={submitHandler}>
+	<Form onSubmit={submitHandler}>
 	    
-	    <label>
-		Username:<br/>
-		<input
+	    <Form.Group controlId="formUsername">
+		<Form.Label>Username:</Form.Label>
+		<Form.Control
 		    type="text"
 		    value={username}
 		    onChange={
@@ -96,13 +99,14 @@ export const LoginView = ({ onLoggedIn }) => {
 		    }
 		    required
 		/>
-	    </label>
+	    </Form.Group>
 	    
 	    <br/><br/>
 	    
-	    <label>
-		Password:<br/>
-		<input
+	    <Form.Group controlId="formPassword">
+		<Form.Label>
+		Password:</Form.Label>
+		<Form.Control
 		    type="password"
 		    value={password}
 		    onChange={
@@ -111,12 +115,16 @@ export const LoginView = ({ onLoggedIn }) => {
 		    }
 		    required
 		/>
-	    </label>
+	    </Form.Group>
 
 	    <br/><br/>
 	    
-	    <button type="submit">Login</button>
+	    <Button variant="primary" type="submit">
+		Login
+	    </Button>
 	    
-	</form>
+	    <br/><br/>
+	    
+	</Form>
     );
 };

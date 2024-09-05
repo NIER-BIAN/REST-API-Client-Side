@@ -1,4 +1,11 @@
+// Dev:
+// Username: NierTestSignup
+// Password: Password
+
 import React from "react";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const SignupView = () => {
 
@@ -33,33 +40,38 @@ export const SignupView = () => {
     };
 
     return (
-	<form onSubmit={submitHandler}>
-	    <label>
-		Username:<br/>
-		<input
+	<Form onSubmit={submitHandler}>
+	    <Form.Group controlId="formUsername">
+		<Form.Label>Username:</Form.Label>
+		<Form.Control
 		    type="text"
 		    value={username}
 		    onChange={(e) => updateUsername(e.target.value)}
 		    required
 		    minLength="5"
 		/>
-	    </label>
+	    </Form.Group>
 
 	    <br/><br/>
 	    
-	    <label>
-		Password:<br/>
-		<input
+	    <Form.Group controlId="formPassword">
+		<Form.Label>Password:</Form.Label>
+		<Form.Control
 		    type="password"
 		    value={password}
 		    onChange={(e) => updatePassword(e.target.value)}
 		    required
 		/>
-	    </label>
+	    </Form.Group>
 
 	    <br/><br/>
 	    
-	    <button type="submit">Register</button>
-	</form>
+	    <Button variant="primary" type="submit">
+		Register
+	    </Button>
+
+	    <br/><br/>
+	    
+	</Form>
     );
 };

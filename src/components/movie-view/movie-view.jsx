@@ -1,4 +1,4 @@
-// This component accepts data from the parent component's (MainView's) state via props
+// This component accepts data from MainView's state via props
 // props allows tinkering with parent and child independently
 // as long as parent passes on all props expected by the child
 
