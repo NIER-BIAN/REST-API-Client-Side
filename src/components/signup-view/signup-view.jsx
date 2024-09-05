@@ -2,7 +2,7 @@ import React from "react";
 
 export const SignupView = () => {
 
-    const [username, updatetUsername] = React.useState("");
+    const [username, updateUsername] = React.useState("");
     const [password, updatePassword] = React.useState("");
     
     // event handler to be attached to the onSubmit event of the JSX form below
@@ -39,7 +39,7 @@ export const SignupView = () => {
 		<input
 		    type="text"
 		    value={username}
-		    onChange={(e) => setUsername(e.target.value)}
+		    onChange={(e) => updateUsername(e.target.value)}
 		    required
 		    minLength="5"
 		/>
@@ -52,7 +52,7 @@ export const SignupView = () => {
 		<input
 		    type="password"
 		    value={password}
-		    onChange={(e) => setPassword(e.target.value)}
+		    onChange={(e) => updatePassword(e.target.value)}
 		    required
 		/>
 	    </label>

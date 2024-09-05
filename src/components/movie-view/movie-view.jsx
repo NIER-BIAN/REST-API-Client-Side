@@ -2,6 +2,8 @@
 // props allows tinkering with parent and child independently
 // as long as parent passes on all props expected by the child
 
+import "./movie-view.scss";
+
 // destructure props arg to access properties directly
 export const MovieView = ({ movieViewContent, onBackClick }) => {
     return (
@@ -28,7 +30,18 @@ export const MovieView = ({ movieViewContent, onBackClick }) => {
 	    <br/>
 	    <br/>
 
-	    <button onClick={onBackClick}>Back</button>
+	    <button
+		onClick={onBackClick}
+		className="back-button"
+		style={
+		    // note the 2 pairs of curly-braces!
+		    // let React know value is to be evaluated as js
+		    // create the js object "style"
+		    { cursor: "pointer" }
+		}
+	    >
+		Back
+	    </button>
 	    
 	</div>
     );
