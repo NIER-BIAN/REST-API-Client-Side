@@ -1,12 +1,17 @@
 // import statement to indicate files that parcel needs to bundle
 
-// stylesheets
+
+// library imports
+import { createRoot } from 'react-dom/client';
+
+// css imports
 import Container from 'react-bootstrap/Container';
 import './index.scss';
 
-// components
-import { createRoot } from 'react-dom/client';
+// local imports
 import { MainView } from './components/main-view/main-view';
+
+// ===========================================================================
 
 // main component (will eventually use all the others)
 const App = () => {

@@ -2,10 +2,18 @@
 // props allows tinkering with parent and child independently
 // as long as parent passes on all props expected by the child
 
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+
 import "./movie-view.scss";
 
 // destructure props arg to access properties directly
-export const MovieView = ({ movieViewContent, onBackClick }) => {
+export const MovieView = ({ movieViewContentList }) => {
+
+    const { movieId } = useParams();
+    
+    const movieViewContent = movieViewContentList.find((m) => m.id === movieId);
+
     return (
 	<div>
 	    
@@ -30,21 +38,10 @@ export const MovieView = ({ movieViewContent, onBackClick }) => {
 	    <br/>
 	    <br/>
 
-	    <button
-		onClick={onBackClick}
-		className="back-button"
-		style={
-		    // note the 2 pairs of curly-braces!
-		    // let React know value is to be evaluated as js
-		    // create the js object "style"
-		    { cursor: "pointer" }
-		}
-	    >
-		Back
-	    </button>
+	    <Link to={`/`}>
+		<button className="back-button">Back</button>
+	    </Link>
 	    
 	</div>
     );
 };
-// note that here we are passing a reference to the onBackClick func
-// "when there is a click, invoke func"
