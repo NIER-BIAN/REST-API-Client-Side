@@ -7,7 +7,6 @@ import { Button } from "react-bootstrap";
 // =======================================================================
 
 export const ProfileView = ({ user, token, onDeletion}) => {
-
     
     // ===================================================================
     // DATA MANAGEMENT (useState hooks)
@@ -49,13 +48,13 @@ export const ProfileView = ({ user, token, onDeletion}) => {
 	    .then(response => {
 		if (response.ok) {
 		    onDeletion();
-		    alert("We're sorry to see you go. Your account has been deleted!");
+		    alert('We are sorry to see you go. Your account has been deleted!');
                 } else {
                     throw new Error('Failed to deregister user');
                 }
             })
             .catch(error => {
-                console.error("Error:", error);
+                console.error('Error:', error);
             });
     };
     
@@ -70,7 +69,7 @@ export const ProfileView = ({ user, token, onDeletion}) => {
 		    <br/><br/>
                     <h1>{userInfo.username}'s Profile</h1>
 		    <br/><br/>
-                    <p>Favorited movies: {userInfo.favoriteMovies}</p>
+                    <p>Favourited movies: {userInfo.favoriteMovies}</p>
                     <Button
 			variant="danger"
 			onClick={deregistrationHandler}

@@ -34,6 +34,7 @@ export const MainView = () => {
 
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
+    
     const [user, updateUser] = useState(storedUser? storedUser : null);
     const [token, updateToken] = useState(storedToken? storedToken : null);
     
@@ -47,7 +48,7 @@ export const MainView = () => {
     // SIDE EFFECTS (useEffect hooks)
     // code for performing async tasks (fetch from API) or event listeners (key bindings) go here
 
-    // retrieve data from API
+    // retrieve movie data from API
     useEffect(
 	// arg 1: code you want to run as a side effect
 	() => {
@@ -212,7 +213,9 @@ export const MainView = () => {
 					</Col>
 				    ) : (
 					<Col md={8}>
-					    <MovieView 
+					    <MovieView
+						user={user}
+						token={token}
 						movieViewContentList={
 						    // in case of clicking on a selected movie
 						    // render  MovieView, pass whole movieList as prop
