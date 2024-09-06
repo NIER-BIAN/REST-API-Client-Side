@@ -12,6 +12,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 
 // =======================================================================
 
@@ -103,7 +104,7 @@ export const MainView = () => {
     // UI RENDERING (MainView's UI is dynamically adjusted based on StateVars)
 
     // each <Route> component has a path prop (what URL it should match) and an element prop
-    // note is the 3rd of the 5 <Route> components with URL path="/movies/:movieId" (display 1 film)
+    // note is the 3rd of the 6 <Route> components with URL path="/movies/:movieId" (display 1 film)
     // contains a URL param movieId, that allows Routes to match dynamic URLs
     // URL params are accessed in movie-card.jsx
     
@@ -173,6 +174,31 @@ export const MainView = () => {
 			    }
 			/>
 
+			<Route
+			    path="/users/:username"
+			    element={
+				<div>
+				    {!user ? (
+					<Navigate to="/login" replace />
+				    ) : (
+					<Col md={8}>
+					    <ProfileView
+						user={user}
+						token={token}
+						onDeletion={
+						    () => {
+							// clear up sessions upon log out
+							updateUser(null);
+							updateToken(null); 
+							localStorage.clear();
+						    }}
+					    />
+					</Col>
+				    )}
+				</div>
+			    }
+			/>
+
 
 			<Route
 			    path="/movies/:movieId"
@@ -182,8 +208,7 @@ export const MainView = () => {
 					<Navigate to="/login" replace />
 				    ) : movieList.length === 0 ? (
 					<Col md={6}>
-					    <h1>Whoops. Something is wrong on the backend.</h1>
-					    <p> movieList is empty!</p>
+					    <h1>Loading</h1>
 					</Col>
 				    ) : (
 					<Col md={8}>
@@ -215,8 +240,7 @@ export const MainView = () => {
 					<Navigate to="/login" replace />
 				    ) : movieList.length === 0 ? (
 					<Col md={6}>
-					    <h1>Whoops. Something is wrong on the backend.</h1>
-					    <p> movieList is empty!</p>
+					    <h1>Loading</h1>
 					</Col>
 				    ) : (
 					<div>
@@ -224,7 +248,7 @@ export const MainView = () => {
 						{
 						    //render moveCard components based on movieList
 						    // pass movieViewContent & onMovieClick as props
-
+						    
 						    movieList.map((movie) => (
 							
 							// display cards
