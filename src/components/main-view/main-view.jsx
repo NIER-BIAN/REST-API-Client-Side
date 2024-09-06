@@ -23,7 +23,7 @@ export const MainView = () => {
 
     // ===================================================================
     
-//    // DATA MANAGEMENT (useState hooks)
+    // DATA MANAGEMENT (useState hooks)
     // state: what the component needs to operate
     // e.g. state var that identifies whether there was a user click or not
     // e.g. a list of all movies
@@ -109,11 +109,18 @@ export const MainView = () => {
     
     return (
 	<BrowserRouter>
-	    
+	    <NavigationBar
+		user={user}
+		onLoggedOut={
+		    () => {
+			// clear up sessions upon log out
+			updateUser(null);
+			updateToken(null); 
+			localStorage.clear();
+		    }}
+	    />
 		<Row className="justify-content-md-center">
 		    <Routes>
-
-			
 			<Route
 			    path="/signup"
 			    element={
@@ -122,8 +129,10 @@ export const MainView = () => {
 					<Navigate to="/" />
 				    ) : (
 					<Col md={6}>
-					    <h1>Welcome to MyFlix!</h1>
-					    <br/>
+					    <br/><br/>
+					    <h1>New here?</h1>
+					    <p>Sign up to create your account!</p>
+					    <br/><br/>
 					    <SignupView />
 					</Col>
 				    )}
@@ -141,10 +150,11 @@ export const MainView = () => {
 					<Navigate to="/" />
 				    ) : (
 					<Col md={6}>
+					    <br/><br/>
 					    <h1>Welcome to MyFlix!</h1>
-					    <br/>
+					    <p>Already a user? Log in to your account!</p>
+					    <br/><br/>
 					    <LoginView
-						
 						onLoggedIn={
 						    // Note: Mainview owns the state User
 						    // so we can only change it here
@@ -236,7 +246,6 @@ export const MainView = () => {
 			/>
 		    </Routes>
 		</Row>
-		
 	</BrowserRouter>
     );
 };
