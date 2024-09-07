@@ -97,7 +97,7 @@ export const MainView = () => {
 		console.log(data);
 	    });
 	// arg 2: array of dependencies. When dependencies change, rerun effect
-    }, [token]);
+    }, [user, token]);
 
     
     // ===================================================================
@@ -187,6 +187,13 @@ export const MainView = () => {
 						user={user}
 						token={token}
 						onDeletion={
+						    () => {
+							// clear up sessions upon log out
+							updateUser(null);
+							updateToken(null); 
+							localStorage.clear();
+						    }}
+						onLoggedOut={
 						    () => {
 							// clear up sessions upon log out
 							updateUser(null);

@@ -23,7 +23,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     const { movieId } = useParams();
     
     // note that MainView passed the whole movieList as prop as
-    // URL params can only be accessed in movie-card.jsx i.e. nside the component that gets rendered 
+    // URL params can only be accessed in movie-card.jsx i.e. inside the component that gets rendered 
     const movieViewContent = movieViewContentList.find((m) => m.id === movieId);
     const [userFavorites, updateUserFavorites] = useState([]);
     
@@ -65,8 +65,8 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 	})
 	    .then(response => {
 		if (response.ok) {
-		    console.log(`A ${method} req was sent`);
-		    console.log('Button worked');
+		    // console.log(`A ${method} req was sent`);
+		    // console.log('Button worked');
 		    
 		    const updatedFavorites = isFavorite
 			  ? userFavorites.filter(id => id !== movieId) // Remove from favorites
