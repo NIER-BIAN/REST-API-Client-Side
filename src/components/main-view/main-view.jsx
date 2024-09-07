@@ -186,6 +186,7 @@ export const MainView = () => {
 					    <ProfileView
 						user={user}
 						token={token}
+						movieList={movieList}
 						onDeletion={
 						    () => {
 							// clear up sessions upon log out

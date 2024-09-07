@@ -8,15 +8,19 @@ import Form from "react-bootstrap/Form";
 
 // =======================================================================
 
-export const ProfileView = ({ user, token, onDeletion, onLoggedOut }) => {
+export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut }) => {
     
     // ===================================================================
     // DATA MANAGEMENT (useState hooks)
     
     const [userInfoFromAPI, updateUserInfoFromAPI] = useState(null);
+    // note: anything we want accessible within  component's scope
+    // we define and updae it as a state within the useEffect hook 
+    const [readableFavoritesList, updateReadableFavoritesList] = useState([]);
 
     const [newUsername, updateNewUsername] = useState("");
     const [newPassword, updateNewPassword] = useState("");
+    
     
     // ===================================================================
     // SIDE EFFECTS (useEffect hooks)
@@ -33,6 +37,11 @@ export const ProfileView = ({ user, token, onDeletion, onLoggedOut }) => {
 		.then(
 		    (data) => {
 			updateUserInfoFromAPI(data);
+
+			// convert to string before formulating list
+			favoriteMovieIds = userInfoFromAPI.favoriteMovies.map(id => String(id));
+			faves = movieList.filter(movie => favoriteMovieIds.includes(String(movie.id)));
+			updateReadableFavoritesList(faves);
 		    })
 		.catch((error) => {
 		    console.error("Error fetching user data:", error);
@@ -103,7 +112,15 @@ export const ProfileView = ({ user, token, onDeletion, onLoggedOut }) => {
 		    <br/><br/>
                     <h1>{userInfoFromAPI.username}'s Profile</h1>
 		    <br/><br/>
-                    <p>Favourited movies: {userInfoFromAPI.favoriteMovies}</p>
+                    <p>Favourited movies:</p>
+		    <ul>
+			{readableFavoritesList.map(
+			    movie => (
+				<li key={movie._id}
+				>{movie.title}
+				</li>
+			    ))}
+		    </ul>
 
 
 		    <br/><hr/><br/>
