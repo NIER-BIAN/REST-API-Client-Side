@@ -8,9 +8,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
+// local imports
 import "./movie-view.scss";
+import { MovieCard } from '../movie-card/movie-card';
 
 // =======================================================================
 
@@ -26,6 +28,11 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     // URL params can only be accessed in movie-card.jsx i.e. inside the component that gets rendered 
     const movieViewContent = movieViewContentList.find((m) => m.id === movieId);
     const [userFavorites, updateUserFavorites] = useState([]);
+
+    const similarMovies = movieViewContentList.filter(
+	m => m.genre.name === movieViewContent.genre.name && m.title !== movieViewContent.title
+	// same genre but isn't the current movie
+    );
     
     // ===================================================================
     // SIDE EFFECTS (useEffect hooks)
@@ -127,6 +134,26 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 		>Back
 		</Button>
 	    </Link>
+
+	    <br/><br/><br/>
+            <h3>More movies of the same genre:</h3>
+	    <Container>
+		<Row>
+		    {
+			similarMovies.map((movie) => (
+			    
+			    // display cards
+			    
+			    // "mb" stands for "margin bottom"
+			    // "md" stands for "medium"
+			    // i.e. take up 3 shares of 12
+			    
+			    <Col className="mb-2" key={movie.id} md={3}>
+				<MovieCard movieCardContent={movie} />
+			    </Col>
+			))}
+		</Row>
+	    </Container>
 	    
 	</div>
     );

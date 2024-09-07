@@ -118,9 +118,6 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 		    <Container>
 			<Row>
 			    {
-				//render moveCard components based on movieList
-				// pass movieViewContent & onMovieClick as props
-				
 				readableFavoritesList.map((movie) => (
 				    
 				    // display cards
