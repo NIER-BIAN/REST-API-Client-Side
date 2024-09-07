@@ -1,10 +1,12 @@
 // =======================================================================
 // IMPORTS
 
+// library imports
 import { useState, useEffect } from "react";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+// local imports
+import { MovieCard } from '../movie-card/movie-card';
 
 // =======================================================================
 
@@ -39,7 +41,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 			updateUserInfoFromAPI(data);
 
 			// convert to string before formulating list
-			favoriteMovieIds = userInfoFromAPI.favoriteMovies.map(id => String(id));
+			favoriteMovieIds = data.favoriteMovies.map(id => String(id));
 			faves = movieList.filter(movie => favoriteMovieIds.includes(String(movie.id)));
 			updateReadableFavoritesList(faves);
 		    })
@@ -113,14 +115,26 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
                     <h1>{userInfoFromAPI.username}'s Profile</h1>
 		    <br/><br/>
                     <p>Favourited movies:</p>
-		    <ul>
-			{readableFavoritesList.map(
-			    movie => (
-				<li key={movie._id}
-				>{movie.title}
-				</li>
-			    ))}
-		    </ul>
+		    <Container>
+			<Row>
+			    {
+				//render moveCard components based on movieList
+				// pass movieViewContent & onMovieClick as props
+				
+				readableFavoritesList.map((movie) => (
+				    
+				    // display cards
+				    
+				    // "mb" stands for "margin bottom"
+				    // "md" stands for "medium"
+				    // i.e. take up 3 shares of 12
+				    
+				    <Col className="mb-2" key={movie.id} md={3}>
+					<MovieCard movieCardContent={movie} />
+				    </Col>
+				))}
+			</Row>
+		    </Container>
 
 
 		    <br/><hr/><br/>
