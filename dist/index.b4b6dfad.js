@@ -42241,7 +42241,10 @@ const MovieView = ({ user, token, movieViewContentList })=>{
     }, // arg 2: array of dependencies. When dependencies change, rerun effect
     // empty array = the effect will only run once after the initial render
     // callback doesn’t depend on any value changes in props or state
-    []);
+    [
+        user,
+        token
+    ]);
     const favoritingHandler = ()=>{
         // toggles between DELETE / POST depending on whether it's already favourited
         const isFavorite = userFavorites.includes(movieId);
@@ -42449,7 +42452,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router":"dbWyW","react-router-dom":"9xmpe","./movie-view.scss":"jnlR5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router":"dbWyW","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","./movie-view.scss":"jnlR5","../movie-card/movie-card":"bwuIu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42976,7 +42979,8 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
     // empty array = the effect will only run once after the initial render
     // callback doesn’t depend on any value changes in props or state
     [
-        user
+        user,
+        token
     ]);
     // Change username & password event handler
     // the event handler is func that takes event obj as parameter

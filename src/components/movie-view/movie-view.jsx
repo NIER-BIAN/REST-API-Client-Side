@@ -57,7 +57,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 	// arg 2: array of dependencies. When dependencies change, rerun effect
 	// empty array = the effect will only run once after the initial render
 	// callback doesn’t depend on any value changes in props or state
-	[]
+	[user, token]
     );
     
     const favoritingHandler = () => {

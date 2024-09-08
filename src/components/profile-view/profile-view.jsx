@@ -52,7 +52,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 	// arg 2: array of dependencies. When dependencies change, rerun effect
 	// empty array = the effect will only run once after the initial render
 	// callback doesn’t depend on any value changes in props or state
-	[user]
+	[user, token]
     );
     
     // Change username & password event handler
