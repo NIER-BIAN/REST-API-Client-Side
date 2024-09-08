@@ -27,7 +27,8 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     // note that MainView passed the whole movieList as prop as
     // URL params can only be accessed in movie-card.jsx i.e. inside the component that gets rendered 
     const movieViewContent = movieViewContentList.find((m) => m.id === movieId);
-    const [userFavorites, updateUserFavorites] = useState([]);
+    
+    const [isFavorited, updateIsFavorited] = useState(false);
 
     const similarMovies = movieViewContentList.filter(
 	m => m.genre.name === movieViewContent.genre.name && m.title !== movieViewContent.title
@@ -48,7 +49,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 		    (response) => response.json())
 		.then(
 		    (data) => {
-			updateUserFavorites(data.favoriteMovies);
+			updateIsFavorited(data.favoriteMovies.includes(movieId));
 		    })
 		.catch((error) => {
 		    console.error("Error fetching user data:", error);
@@ -63,8 +64,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     const favoritingHandler = () => {
 
 	// toggles between DELETE / POST depending on whether it's already favourited
-	const isFavorite = userFavorites.includes(movieId);
-        const method = isFavorite ? 'DELETE' : 'PATCH';
+        const method = isFavorited ? 'DELETE' : 'PATCH';
 	
 	fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}/movies/${movieId}`, {
 	    method: method,
@@ -74,12 +74,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 		if (response.ok) {
 		    // console.log(`A ${method} req was sent`);
 		    // console.log('Button worked');
-		    
-		    const updatedFavorites = isFavorite
-			  ? userFavorites.filter(id => id !== movieId) // Remove from favorites
-			  : [...userFavorites, movieId]; // Add to favorites
-		    updateUserFavorites(updatedFavorites);
-		    
+		    updateIsFavorited(!isFavorited);
                 } else {
                     throw new Error('Failed to toggle movie status');
                 }
@@ -121,7 +116,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 		onClick={favoritingHandler}>
 		
                 {// button labelling based on js evaluation
-		    userFavorites.includes(movieId) ? 'Remove from Favorites' : 'Add to Favorites'
+		    isFavorited ? 'Remove from Favorites' : 'Add to Favorites'
 		}
 		
             </Button>
