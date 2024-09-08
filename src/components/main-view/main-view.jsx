@@ -65,6 +65,8 @@ export const MainView = () => {
 				title: doc.title,
 				director: doc.director,
 				genre: doc.genre,
+				description: doc.description,
+				imagePath: doc.imagePath
 			    };
 			});
 			
@@ -182,7 +184,7 @@ export const MainView = () => {
 				    {!user ? (
 					<Navigate to="/login" replace />
 				    ) : (
-					<Col md={8}>
+					<Col md={8} className="mx-auto">
 					    <ProfileView
 						user={user}
 						token={token}
@@ -220,7 +222,7 @@ export const MainView = () => {
 					    <h1>Loading</h1>
 					</Col>
 				    ) : (
-					<Col md={8}>
+					<Col className="mx-auto" md={8}>
 					    <MovieView
 						user={user}
 						token={token}
@@ -269,7 +271,10 @@ export const MainView = () => {
 							// "md" stands for "medium"
 							// i.e. take up 3 shares of 12
 							
-							<Col className="mb-2" key={movie.id} md={3}>
+							<Col
+							    className="mb-1 mt-2"
+							    key={movie.id}
+							    lg={3} md={4} sm={6} xs={6}>
 							    <MovieCard movieCardContent={movie} />
 							</Col>
 						    ))}

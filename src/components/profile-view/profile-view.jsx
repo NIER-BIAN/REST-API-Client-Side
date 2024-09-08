@@ -126,7 +126,10 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 				    // "md" stands for "medium"
 				    // i.e. take up 3 shares of 12
 				    
-				    <Col className="mb-2" key={movie.id} md={3}>
+				    <Col
+					className="mb-1 mt-2"
+					key={movie.id}
+					md={4} sm={6} xs={6}>
 					<MovieCard movieCardContent={movie} />
 				    </Col>
 				))}

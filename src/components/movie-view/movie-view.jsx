@@ -43,8 +43,8 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 	// arg 1: code you want to run as a side effect
 	() => {
 	    fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
-	    headers: { Authorization: `Bearer ${token}` }
-	})
+		headers: { Authorization: `Bearer ${token}` }
+	    })
 		.then(
 		    (response) => response.json())
 		.then(
@@ -83,69 +83,79 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
                 console.error('Error:', error);
             });
     };
-    
+
     // ===================================================================
     // UI RENDERING (MainView's UI is dynamically adjusted based on StateVars)
     
     return (
-	<div>
-	    
-	    <h1>{movieViewContent.title}</h1>
-	    
-	    <br/>
-	    
-	    <div>Director: {movieViewContent.director.name}</div>
-	    
-	    <br/>
-	    
-	    <div>{movieViewContent.director.bio}</div>
-	    
-	    <br/>
-	    
-	    <div>Genre: {movieViewContent.genre.name}</div>
+	<Container>
+	    <Row className="mb-5 mt-4 ml-2 mr-2" >
+		<Col lg={6}>
+		    <img
+			style={{ maxHeight: "100%" }}
+			className="img-fluid mb-4"
+			src={movieViewContent.imagePath} />
+		</Col>
+		<Col lg={6}>
+		    
+		    <h1>{movieViewContent.title}</h1>
 
-	    <br/>
+		    <div>{movieViewContent.description}</div>
 
-	    <div>{movieViewContent.genre.description}</div>
+		     <br/>
+		    
+		    <div>Director: {movieViewContent.director.name}</div>
+		    
+		    <br/>
+		    
+		    <div>{movieViewContent.director.bio}</div>
+		    
+		    <br/>
+		    <br/>
+
+		    {isFavorited !== null && ( // Only render button after API call
+			<Button variant="secondary" onClick={favoritingHandler}>
+			    {isFavorited ? 'Remove from Favorites' : 'Add to Favorites'}
+			</Button>
+		    )}
+
+		    <br/><br/>
+
+		    <Link to={`/`}>
+			<Button
+			    variant="primary"
+			>Back
+			</Button>
+		    </Link>
+		</Col>
+	    </Row>
 	    
-	    <br/>
-	    <br/>
-
-	    {isFavorited !== null && ( // Only render button after API call
-                <Button variant="secondary" onClick={favoritingHandler}>
-                    {isFavorited ? 'Remove from Favorites' : 'Add to Favorites'}
-                </Button>
-            )}
-
-	    <br/><br/>
-
-	    <Link to={`/`}>
-		<Button
-		    variant="primary"
-		>Back
-		</Button>
-	    </Link>
-
-	    <br/><br/><br/>
-            <h3>More movies of the same genre:</h3>
-	    <Container>
-		<Row>
-		    {
-			similarMovies.map((movie) => (
-			    
-			    // display cards
-			    
-			    // "mb" stands for "margin bottom"
-			    // "md" stands for "medium"
-			    // i.e. take up 3 shares of 12
-			    
-			    <Col className="mb-2" key={movie.id} md={3}>
-				<MovieCard movieCardContent={movie} />
-			    </Col>
-			))}
-		</Row>
-	    </Container>
+	    <Row>
+		<Col>
+		    <h3>More movies of the same genre:</h3>
+		    
+		    <br/>
+		    
+		    <Row>
+			{
+			    similarMovies.map((movie) => (
+				
+				// display cards
+				
+				// "mb" stands for "margin bottom"
+				// "md" stands for "medium"
+				// i.e. take up 3 shares of 12
+				
+				<Col className="mb-1 mt=2"
+				     key={movie.id}
+				     md={4} sm={6} xs={6}>
+				    <MovieCard movieCardContent={movie} />
+				</Col>
+			    ))}
+		    </Row>
+		</Col>
+	    </Row>
 	    
-	</div>
+	</Container>
     );
 };
