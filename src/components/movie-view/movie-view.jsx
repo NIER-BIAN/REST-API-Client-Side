@@ -28,7 +28,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     // URL params can only be accessed in movie-card.jsx i.e. inside the component that gets rendered 
     const movieViewContent = movieViewContentList.find((m) => m.id === movieId);
     
-    const [isFavorited, updateIsFavorited] = useState(false);
+    const [isFavorited, updateIsFavorited] = useState(null);
 
     const similarMovies = movieViewContentList.filter(
 	m => m.genre.name === movieViewContent.genre.name && m.title !== movieViewContent.title
@@ -111,15 +111,11 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 	    <br/>
 	    <br/>
 
-	    <Button
-		variant="secondary"
-		onClick={favoritingHandler}>
-		
-                {// button labelling based on js evaluation
-		    isFavorited ? 'Remove from Favorites' : 'Add to Favorites'
-		}
-		
-            </Button>
+	    {isFavorited !== null && ( // Only render button after API call
+                <Button variant="secondary" onClick={favoritingHandler}>
+                    {isFavorited ? 'Remove from Favorites' : 'Add to Favorites'}
+                </Button>
+            )}
 
 	    <br/><br/>
 
