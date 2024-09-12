@@ -1,3 +1,6 @@
+# This file configures behaviors of myFlix for deployment on the Netlify
+
+# define a redirect rule: any request will be redirected to root
 [[redirects]]
   from = "/*"
   to = "/"
