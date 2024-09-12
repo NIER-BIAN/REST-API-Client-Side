@@ -39,9 +39,11 @@ export const MainView = () => {
     const [token, updateToken] = useState(storedToken? storedToken : null);
     
     const [movieList, updateMovieList] = useState([]);
-    // currentStateVar now holds the initial list
-    // in case of state changes (e.g. more movies are added or removed)
-    // React will REACT / auto-re-render component with the updated state
+
+    const [searchQuery, updateSearchQuery] = useState('');
+    const [filteredMovies, updateFilteredMovies] = useState(movieList);
+    
+    // in case of state changes, React will REACT / auto-re-render component with the updated state
 
     // ===================================================================
     
@@ -79,9 +81,9 @@ export const MainView = () => {
 	// callback doesn’t depend on any value changes in props or state
 	[]
     );
-
-    // token is initially blank upon login
-    // manually set it to the token we got back from the login API
+    
+    // manually set token to the token we got back from the login API
+    // as otherwise it would be initially blank upon login
     // at that moment, UI will update and load the list of movies using the token.
     // **BEWARE**: there never was an auth gate on my /movies endpoint)
     useEffect(() => {
@@ -101,6 +103,17 @@ export const MainView = () => {
 	// arg 2: array of dependencies. When dependencies change, rerun effect
     }, [user, token]);
 
+    // allow search
+    useEffect(() => {
+	// arg 1: code you want to run as a side effect
+	updateFilteredMovies(
+	     movieList.filter((movie) =>
+		 movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+	    )
+	);
+	// arg 2: array of dependencies. When dependencies change, rerun effect
+    }, [searchQuery, movieList]);
+
     
     // ===================================================================
     
@@ -115,6 +128,7 @@ export const MainView = () => {
 	<BrowserRouter>
 	    <NavigationBar
 		user={user}
+		onSearch={(query) => updateSearchQuery(query)}
 		onLoggedOut={
 		    () => {
 			// clear up sessions upon log out
@@ -259,10 +273,11 @@ export const MainView = () => {
 					<div>
 					    <Row>
 						{
-						    //render moveCard components based on movieList
+						    // render moveCard components based on filteredMovies
+						    // if no searchQuery, will show all movies
 						    // pass movieViewContent & onMovieClick as props
 						    
-						    movieList.map((movie) => (
+						    filteredMovies.map((movie) => (
 							
 							// display cards
 							// map() maps items in list to a movieCard component
