@@ -30,7 +30,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
     useEffect(
 	// arg 1: code you want to run as a side effect
 	() => {
-	    fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+	    fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
 	    headers: { Authorization: `Bearer ${token}` }
 	})
 		.then(
@@ -65,7 +65,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 	    password: newPassword,
 	};
 
-	fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+	fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
 	    method: "PUT",
 	    body: JSON.stringify(data),
 	    headers: {
@@ -84,7 +84,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 
     // Deregister user
     const deregistrationHandler = () => {
-	fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+	fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
 	    method: 'DELETE',
 	    headers: { 'Authorization': `Bearer ${token}` }
 	})

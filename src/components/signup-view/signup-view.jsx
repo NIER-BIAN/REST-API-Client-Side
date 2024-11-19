@@ -23,7 +23,7 @@ export const SignupView = () => {
 	    password: password,
 	};
 
-	fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/users", {
+	fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users", {
 	    method: "POST",
 	    body: JSON.stringify(data),
 	    headers: {

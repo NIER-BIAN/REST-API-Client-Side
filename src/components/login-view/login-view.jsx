@@ -19,7 +19,7 @@ export const LoginView = ({ onLoggedIn }) => {
 	};
 	
 	fetch(
-	    "https://nier-my-api-abd94dc0d9b6.herokuapp.com/login",
+	    "https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/login",
 	    {
 		method: "POST",
 		headers: { "Content-Type": "application/json"},

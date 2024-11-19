@@ -54,7 +54,7 @@ export const MainView = () => {
     useEffect(
 	// arg 1: code you want to run as a side effect
 	() => {
-	    fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/movies")
+	    fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/movies")
 		.then(
 		    (response) => response.json()
 		)
@@ -93,7 +93,7 @@ export const MainView = () => {
 	}
 
 	// arg 1: code you want to run as a side effect
-	fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/movies", {
+	fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/movies", {
 	    headers: { Authorization: `Bearer ${token}` }
 	})
 	    .then((response) => response.json())
