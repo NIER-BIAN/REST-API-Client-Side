@@ -23,7 +23,6 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
     const [newUsername, updateNewUsername] = useState("");
     const [newPassword, updateNewPassword] = useState("");
     
-    
     // ===================================================================
     // SIDE EFFECTS (useEffect hooks)
     
@@ -169,9 +168,16 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 			<Button
 			    variant="primary"
 			    type="submit"
+			    disabled={user.username === "UserNameForTesting"}
 			>Update my details
 			</Button>
 
+			{user.username === "UserNameForTesting" && (
+			    <p style={{ color: 'red' }}>
+				Psst: Action disabled as you're signed in as a test user.
+		            </p>
+			)}
+				
 			<br/><br/>
 			
 		    </Form>
@@ -182,8 +188,17 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
                     <Button
 			variant="danger"
 			onClick={deregistrationHandler}
+			disabled={user.username === "UserNameForTesting"}
 		    >Deregister
 		    </Button>
+		    
+		    {user.username === "UserNameForTesting" && (
+			<p style={{ color: 'red' }}>
+			    Psst: Action disabled as you're signed in as a test user.
+			</p>
+
+		    )}
+		    
 		    <br/><br/><br/><br/>
                 </div>
             ) : (

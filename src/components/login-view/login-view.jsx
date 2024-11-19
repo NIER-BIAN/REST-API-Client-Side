@@ -10,11 +10,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
     // event handler to be attached to the onSubmit event of the JSX form below
     // the event handler is func that takes event obj as parameter
-    const submitHandler = (event) => {
-
-	// access this event object's preventDefault() method
-	// prevents default behavior of form which is to reload the entire page
-	event.preventDefault();
+    const submitHandler = (username, password) => {
 
 	// creates obj data with the username and password input values.
 	const data = {
@@ -69,15 +65,26 @@ export const LoginView = ({ onLoggedIn }) => {
 	} else {
 	alert("Login failed");
 	}
-	});*/
+	});
+	*/
     }
+
+    const loginWithTestCredentials = () => {
+        submitHandler("UserNameForTesting", "PasswordForTesting");
+    };
 
     return (
 
 	// when JSX forms are defined
 	// we can attach an event handler to the onSubmit event
 	// the event handler is func (see above) that takes event obj as parameter
-	<Form onSubmit={submitHandler}>
+	<Form onSubmit={(e) => {
+		  // access this event object's preventDefault() method
+		  // prevents default behavior of form which is to reload the entire page
+		  e.preventDefault();
+		  submitHandler(username, password);
+              }}
+	>
 	    
 	    <Form.Group controlId="formUsername">
 		<Form.Label>Username:</Form.Label>
@@ -123,7 +130,13 @@ export const LoginView = ({ onLoggedIn }) => {
 		Login
 	    </Button>
 	    
-	    <br/><br/>
+	    <br/><br/><br/>
+
+	    <p>Psst... Your credentials are hashed and stored securely in the backend.</p>
+	    <p>However, you are welcome to sign in as a test user: </p>
+	    <Button variant="secondary" onClick={loginWithTestCredentials}>
+                Login with Test Credentials
+            </Button>
 	    
 	</Form>
     );
