@@ -90,13 +90,13 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     return (
 	<Container>
 	    <Row className="mb-5 mt-4 ml-2 mr-2" >
-		<Col lg={6}>
+		<Col lg={6} md={12}>
 		    <img
 			style={{ maxHeight: "100%" }}
 			className="img-fluid mb-4"
 			src={movieViewContent.imagePath} />
 		</Col>
-		<Col lg={6}>
+		<Col lg={6} md={12}>
 		    
 		    <h1>{movieViewContent.title}</h1>
 

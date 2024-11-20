@@ -42302,6 +42302,7 @@ const MovieView = ({ user, token, movieViewContentList })=>{
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         lg: 6,
+                        md: 12,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             style: {
                                 maxHeight: "100%"
@@ -42320,6 +42321,7 @@ const MovieView = ({ user, token, movieViewContentList })=>{
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         lg: 6,
+                        md: 12,
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                                 children: movieViewContent.title
