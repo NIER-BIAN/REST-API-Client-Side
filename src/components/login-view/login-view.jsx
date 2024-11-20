@@ -74,7 +74,7 @@ export const LoginView = ({ onLoggedIn }) => {
     };
 
     return (
-
+	
 	// when JSX forms are defined
 	// we can attach an event handler to the onSubmit event
 	// the event handler is func (see above) that takes event obj as parameter

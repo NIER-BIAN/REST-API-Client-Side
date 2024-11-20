@@ -137,12 +137,12 @@ export const MainView = () => {
 			localStorage.clear();
 		    }}
 	    />
-		<Row className="justify-content-md-center">
+		<Row className="justify-content-center">
 		    <Routes>
 			<Route
 			    path="/signup"
 			    element={
-				<div>
+				<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 				    {user ? (
 					<Navigate to="/" />
 				    ) : (
@@ -163,7 +163,7 @@ export const MainView = () => {
 			<Route
 			    path="/login"
 			    element={
-				<div>
+				<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 				    {user ? (
 					<Navigate to="/" />
 				    ) : (
@@ -270,7 +270,7 @@ export const MainView = () => {
 					    <h1>Loading</h1>
 					</Col>
 				    ) : (
-					<div>
+					<div style={{padding: "30px"}}>
 					    <Row>
 						{
 						    // render moveCard components based on filteredMovies
