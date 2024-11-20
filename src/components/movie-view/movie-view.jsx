@@ -89,7 +89,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     
     return (
 	<Container>
-	    <Row className="mb-5 mt-4 ml-2 mr-2" >
+	    <Row className="mt-4" >
 		<Col lg={6} md={12}>
 		    <img
 			style={{ maxHeight: "100%" }}
