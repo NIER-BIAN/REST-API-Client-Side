@@ -18,7 +18,7 @@ const App = () => {
     // Container wraps around MainView (essentially the whole app) in index.jsx
     // so that MainView can have rows and cols
     return (
-	<Container>
+	<Container style={{ minWidth: "100%" }}>
 	    <MainView />
 	</Container>
     )

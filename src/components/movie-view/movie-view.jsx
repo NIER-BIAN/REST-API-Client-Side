@@ -88,8 +88,8 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     // UI RENDERING (MainView's UI is dynamically adjusted based on StateVars)
     
     return (
-	<Container style={{ width: '100%' }}>
-	    <Row className="mt-4" >
+	<Container>
+	    <Row className="mt-4">
 		<Col lg={6} md={12}>
 		    <img
 			style={{ maxHeight: "100%" }}
@@ -146,7 +146,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 				// "md" stands for "medium"
 				// i.e. take up 3 shares of 12
 				
-				<Col className="mb-1 mt=2"
+				<Col className="mb-1"
 				     key={movie.id}
 				     md={4} sm={6} xs={6}>
 				    <MovieCard movieCardContent={movie} />

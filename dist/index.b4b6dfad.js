@@ -2968,6 +2968,9 @@ const App = ()=>{
     // Container wraps around MainView (essentially the whole app) in index.jsx
     // so that MainView can have rows and cols
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+        style: {
+            minWidth: "100%"
+        },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
             lineNumber: 22,
@@ -42296,9 +42299,6 @@ const MovieView = ({ user, token, movieViewContentList })=>{
     // ===================================================================
     // UI RENDERING (MainView's UI is dynamically adjusted based on StateVars)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-        style: {
-            width: "100%"
-        },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 className: "mt-4",
@@ -42444,7 +42444,7 @@ const MovieView = ({ user, token, movieViewContentList })=>{
                                 // "md" stands for "medium"
                                 // i.e. take up 3 shares of 12
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                    className: "mb-1 mt=2",
+                                    className: "mb-1",
                                     md: 4,
                                     sm: 6,
                                     xs: 6,
@@ -43178,9 +43178,6 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-                    style: {
-                        width: "100%"
-                    },
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                         children: readableFavoritesList.map((movie)=>// display cards
                             // "mb" stands for "margin bottom"
@@ -43211,7 +43208,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
                     lineNumber: 117,
-                    columnNumber: 4
+                    columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
