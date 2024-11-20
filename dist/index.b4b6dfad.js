@@ -42273,7 +42273,8 @@ const MovieView = ({ user, token, movieViewContentList })=>{
     // callback doesn’t depend on any value changes in props or state
     [
         user,
-        token
+        token,
+        movieId
     ]);
     const favoritingHandler = ()=>{
         // toggles between DELETE / POST depending on whether it's already favourited
