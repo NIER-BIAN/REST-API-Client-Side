@@ -28327,7 +28327,7 @@ const MainView = ()=>{
     // retrieve movie data from API
     (0, _react.useEffect)(// arg 1: code you want to run as a side effect
     ()=>{
-        fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
+        fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const dataFromApi = data.map((doc)=>{
                 return {
                     id: doc._id,
@@ -28351,7 +28351,7 @@ const MainView = ()=>{
     (0, _react.useEffect)(()=>{
         if (!token) return;
         // arg 1: code you want to run as a side effect
-        fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/movies", {
+        fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -42259,7 +42259,7 @@ const MovieView = ({ user, token, movieViewContentList })=>{
     // retrieve user data from API
     (0, _react.useEffect)(// arg 1: code you want to run as a side effect
     ()=>{
-        fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+        fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -42278,7 +42278,7 @@ const MovieView = ({ user, token, movieViewContentList })=>{
     const favoritingHandler = ()=>{
         // toggles between DELETE / POST depending on whether it's already favourited
         const method = isFavorited ? "DELETE" : "PATCH";
-        fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}/movies/${movieId}`, {
+        fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}/movies/${movieId}`, {
             method: method,
             headers: {
                 Authorization: `Bearer ${token}`
@@ -42521,7 +42521,7 @@ const LoginView = ({ onLoggedIn })=>{
             username: username,
             password: password
         };
-        fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/login", {
+        fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -42750,7 +42750,7 @@ const SignupView = ()=>{
             username: username,
             password: password
         };
-        fetch("https://nier-my-api-abd94dc0d9b6.herokuapp.com/users", {
+        fetch("https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -42791,6 +42791,19 @@ const SignupView = ()=>{
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
                 lineNumber: 44,
+                columnNumber: 6
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("small", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
+                    children: 'At least 5 alphanumerical chars please! (i.e. no spaces or "_")'
+                }, void 0, false, {
+                    fileName: "src/components/signup-view/signup-view.jsx",
+                    lineNumber: 54,
+                    columnNumber: 13
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 54,
                 columnNumber: 6
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
@@ -43049,7 +43062,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
     // DATA MANAGEMENT (useState hooks)
     const [userInfoFromAPI, updateUserInfoFromAPI] = (0, _react.useState)(null);
     // note: anything we want accessible within  component's scope
-    // we define and updae it as a state within the useEffect hook 
+    // we define and update it as a state within the useEffect hook 
     const [readableFavoritesList, updateReadableFavoritesList] = (0, _react.useState)([]);
     const [newUsername, updateNewUsername] = (0, _react.useState)("");
     const [newPassword, updateNewPassword] = (0, _react.useState)("");
@@ -43058,15 +43071,15 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
     // retrieve user data from API
     (0, _react.useEffect)(// arg 1: code you want to run as a side effect
     ()=>{
-        fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+        fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>response.json()).then((data)=>{
             updateUserInfoFromAPI(data);
             // convert to string before formulating list
-            favoriteMovieIds = data.favoriteMovies.map((id)=>String(id));
-            faves = movieList.filter((movie)=>favoriteMovieIds.includes(String(movie.id)));
+            const favoriteMovieIds = data.favoriteMovies.map((id)=>String(id));
+            const faves = movieList.filter((movie)=>favoriteMovieIds.includes(String(movie.id)));
             updateReadableFavoritesList(faves);
         }).catch((error)=>{
             console.error("Error fetching user data:", error);
@@ -43086,7 +43099,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
             username: newUsername,
             password: newPassword
         };
-        fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+        fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -43102,7 +43115,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
     };
     // Deregister user
     const deregistrationHandler = ()=>{
-        fetch(`https://nier-my-api-abd94dc0d9b6.herokuapp.com/users/${user.username}`, {
+        fetch(`https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/users/${user.username}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -43253,14 +43266,27 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                             lineNumber: 143,
                             columnNumber: 4
                         }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("small", {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
+                                children: 'At least 5 alphanumerical chars please! (i.e. no spaces or "_")'
+                            }, void 0, false, {
+                                fileName: "src/components/profile-view/profile-view.jsx",
+                                lineNumber: 153,
+                                columnNumber: 11
+                            }, undefined)
+                        }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 154,
+                            lineNumber: 153,
                             columnNumber: 4
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 154,
+                            lineNumber: 155,
+                            columnNumber: 4
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 155,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -43270,7 +43296,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                                     children: "New password:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 157,
+                                    lineNumber: 158,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43280,23 +43306,23 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 158,
+                                    lineNumber: 159,
                                     columnNumber: 8
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 156,
+                            lineNumber: 157,
                             columnNumber: 4
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 166,
+                            lineNumber: 167,
                             columnNumber: 4
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 166,
+                            lineNumber: 167,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -43306,27 +43332,27 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                             children: "Update my details"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 168,
+                            lineNumber: 169,
                             columnNumber: 4
                         }, undefined),
                         user.username === "UserNameForTesting" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             style: {
                                 color: "red"
                             },
-                            children: "Psst: Action disabled as you're signed in as a test user."
+                            children: "Action disabled as you're signed in as a test user."
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 176,
+                            lineNumber: 177,
                             columnNumber: 8
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 181,
+                            lineNumber: 182,
                             columnNumber: 4
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 181,
+                            lineNumber: 182,
                             columnNumber: 9
                         }, undefined)
                     ]
@@ -43337,34 +43363,34 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 185,
+                    lineNumber: 186,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 185,
+                    lineNumber: 186,
                     columnNumber: 12
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 185,
+                    lineNumber: 186,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                     children: "Had enough of us?"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 186,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                    fileName: "src/components/profile-view/profile-view.jsx",
                     lineNumber: 187,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 187,
+                    lineNumber: 188,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                    fileName: "src/components/profile-view/profile-view.jsx",
+                    lineNumber: 188,
                     columnNumber: 12
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -43374,37 +43400,37 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                     children: "Deregister"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 188,
+                    lineNumber: 189,
                     columnNumber: 21
                 }, undefined),
                 user.username === "UserNameForTesting" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     style: {
                         color: "red"
                     },
-                    children: "Psst: Action disabled as you're signed in as a test user."
+                    children: "Action disabled as you're signed in as a test user."
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 196,
+                    lineNumber: 197,
                     columnNumber: 4
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 202,
+                    lineNumber: 203,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 202,
+                    lineNumber: 203,
                     columnNumber: 12
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 202,
+                    lineNumber: 203,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 202,
+                    lineNumber: 203,
                     columnNumber: 22
                 }, undefined)
             ]
@@ -43416,7 +43442,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
             children: "Loading user data..."
         }, void 0, false, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 205,
+            lineNumber: 206,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {

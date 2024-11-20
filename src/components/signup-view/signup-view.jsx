@@ -51,7 +51,7 @@ export const SignupView = () => {
 		    minLength="5"
 		/>
 	    </Form.Group>
-
+	    <small><em>At least 5 alphanumerical chars please! (i.e. no spaces or "_")</em></small>
 	    <br/><br/>
 	    
 	    <Form.Group controlId="formPassword">

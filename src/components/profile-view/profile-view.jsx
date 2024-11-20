@@ -17,7 +17,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
     
     const [userInfoFromAPI, updateUserInfoFromAPI] = useState(null);
     // note: anything we want accessible within  component's scope
-    // we define and updae it as a state within the useEffect hook 
+    // we define and update it as a state within the useEffect hook 
     const [readableFavoritesList, updateReadableFavoritesList] = useState([]);
 
     const [newUsername, updateNewUsername] = useState("");
@@ -40,8 +40,8 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 			updateUserInfoFromAPI(data);
 
 			// convert to string before formulating list
-			favoriteMovieIds = data.favoriteMovies.map(id => String(id));
-			faves = movieList.filter(movie => favoriteMovieIds.includes(String(movie.id)));
+			const favoriteMovieIds = data.favoriteMovies.map(id => String(id));
+			const faves = movieList.filter(movie => favoriteMovieIds.includes(String(movie.id)));
 			updateReadableFavoritesList(faves);
 		    })
 		.catch((error) => {
@@ -150,6 +150,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 				minLength="5"
 			    />
 			</Form.Group>
+			<small><em>At least 5 alphanumerical chars please! (i.e. no spaces or "_")</em></small>
 
 			<br/><br/>
 			
@@ -174,7 +175,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 
 			{user.username === "UserNameForTesting" && (
 			    <p style={{ color: 'red' }}>
-				Psst: Action disabled as you're signed in as a test user.
+				Action disabled as you're signed in as a test user.
 		            </p>
 			)}
 				
@@ -194,7 +195,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
 		    
 		    {user.username === "UserNameForTesting" && (
 			<p style={{ color: 'red' }}>
-			    Psst: Action disabled as you're signed in as a test user.
+			    Action disabled as you're signed in as a test user.
 			</p>
 
 		    )}
