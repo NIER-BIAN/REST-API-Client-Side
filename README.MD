@@ -1,10 +1,10 @@
 # MyFlix (React client)
 
-The website "myFlix" is live and hosted at https://niersveryfirstmernproject.netlify.app/.
+This project is live at https://nier-myflix-react-client.netlify.app/.
 
 ![Screenshot of live app](ReadMeImg.png)
 
-This project is the front-end client side of [myFlix-backend](https://github.com/NIER-BIAN/myFlix-backend) built with React, React Bootstrap, and Parcel. It includes functionalities for user authentication, signing up, logging in, maintaining a list of favorited movies on ones profiles, viewing movie details, searching for movies by name, and listing movies with the same genre in the database. The API consumed is y own API.
+This project serves as the front-end of [myFlix-backend](https://github.com/NIER-BIAN/myFlix-backend) and was built with React, React Bootstrap, and Parcel. It includes functionalities for user authentication, signing up, logging in, maintaining a list of favourited movies on one's profile, viewing movie details, searching for movies by name, and viewing movies with the same genre in the database. The API consumed is a [custom-built RESTful API](https://nier-myflix-backend-63a3c9fa7364.herokuapp.com/) which I also authored.
 
 ## Dev
 
