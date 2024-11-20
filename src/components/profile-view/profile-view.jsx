@@ -114,7 +114,7 @@ export const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })
                     <h1>{userInfoFromAPI.username}'s Profile</h1>
 		    <br/><br/>
                     <p>Favourited movies:</p>
-		    <Container>
+			<Container style={{ width: '100%' }}>
 			<Row>
 			    {
 				readableFavoritesList.map((movie) => (

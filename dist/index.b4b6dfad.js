@@ -42296,6 +42296,9 @@ const MovieView = ({ user, token, movieViewContentList })=>{
     // ===================================================================
     // UI RENDERING (MainView's UI is dynamically adjusted based on StateVars)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+        style: {
+            width: "100%"
+        },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 className: "mt-4",
@@ -43175,6 +43178,9 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+                    style: {
+                        width: "100%"
+                    },
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                         children: readableFavoritesList.map((movie)=>// display cards
                             // "mb" stands for "margin bottom"
@@ -43205,7 +43211,7 @@ const ProfileView = ({ user, token, movieList, onDeletion, onLoggedOut })=>{
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
                     lineNumber: 117,
-                    columnNumber: 7
+                    columnNumber: 4
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",

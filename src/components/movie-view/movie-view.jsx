@@ -88,7 +88,7 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
     // UI RENDERING (MainView's UI is dynamically adjusted based on StateVars)
     
     return (
-	<Container>
+	<Container style={{ width: '100%' }}>
 	    <Row className="mt-4" >
 		<Col lg={6} md={12}>
 		    <img
