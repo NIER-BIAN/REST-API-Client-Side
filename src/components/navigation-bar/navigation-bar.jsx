@@ -31,6 +31,9 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
 				<Nav.Link as={Link} to="/signup">
 				    Signup
 				</Nav.Link>
+				<Nav.Link as={Link} to="https://github.com/NIER-BIAN/myFlix-React-client/tree/main" target="_blank">
+				    View Source
+				</Nav.Link>
 			    </>
 			)}
 			{user && (
@@ -57,6 +60,9 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
 					onChange={handleSearch}
 				    />
 				</Form>
+				<Nav.Link as={Link} to="https://github.com/NIER-BIAN/myFlix-React-client" target="_blank">
+				    View Source
+				</Nav.Link>
 			    </>
 			)}
 		    </Nav>
