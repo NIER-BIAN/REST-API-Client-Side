@@ -51,18 +51,19 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
 				>Logout
 				</Nav.Link>
 				
+				<Nav.Link as={Link} to="https://github.com/NIER-BIAN/myFlix-React-client" target="_blank">
+				    View Source
+				</Nav.Link>
+				
 				<Form>
 				    <FormControl
 					type="search"
 					placeholder="Search for a movie"
-					className="ms-2"
+					className="ms-2 me-4"
 					aria-label="Search"
 					onChange={handleSearch}
 				    />
 				</Form>
-				<Nav.Link as={Link} to="https://github.com/NIER-BIAN/myFlix-React-client" target="_blank">
-				    View Source
-				</Nav.Link>
 			    </>
 			)}
 		    </Nav>
