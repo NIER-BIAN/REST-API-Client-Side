@@ -42439,25 +42439,54 @@ const MovieView = ({ user, token, movieViewContentList })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                            fileName: "src/components/movie-view/movie-view.jsx",
+                            lineNumber: 136,
+                            columnNumber: 7
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                             children: "More movies of the same genre:"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 135,
+                            lineNumber: 137,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: movieViewContent.genre.description
+                        }, void 0, false, {
+                            fileName: "src/components/movie-view/movie-view.jsx",
+                            lineNumber: 139,
                             columnNumber: 7
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 137,
+                            lineNumber: 141,
                             columnNumber: 7
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                            children: similarMovies.map((movie)=>// display cards
+                            children: similarMovies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                                className: "mb-4",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
+                                    children: [
+                                        "Seems like this is the only ",
+                                        movieViewContent.genre.name,
+                                        " movie in the database right now."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/movie-view/movie-view.jsx",
+                                    lineNumber: 146,
+                                    columnNumber: 7
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 145,
+                                columnNumber: 10
+                            }, undefined) : similarMovies.map((movie)=>// display cards
                                 // "mb" stands for "margin bottom"
                                 // "md" stands for "medium"
                                 // i.e. take up 3 shares of 12
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                    className: "mb-1",
+                                    className: "mb-4",
                                     md: 4,
                                     sm: 6,
                                     xs: 6,
@@ -42465,28 +42494,28 @@ const MovieView = ({ user, token, movieViewContentList })=>{
                                         movieCardContent: movie
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 152,
-                                        columnNumber: 9
+                                        lineNumber: 160,
+                                        columnNumber: 11
                                     }, undefined)
                                 }, movie.id, false, {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 149,
-                                    columnNumber: 5
+                                    lineNumber: 157,
+                                    columnNumber: 7
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 139,
+                            lineNumber: 143,
                             columnNumber: 7
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-view/movie-view.jsx",
-                    lineNumber: 134,
+                    lineNumber: 135,
                     columnNumber: 3
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 133,
+                lineNumber: 134,
                 columnNumber: 6
             }, undefined)
         ]

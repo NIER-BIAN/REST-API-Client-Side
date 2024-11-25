@@ -127,31 +127,41 @@ export const MovieView = ({ user, token, movieViewContentList }) => {
 			>Back
 			</Button>
 		    </Link>
+		    
 		</Col>
 	    </Row>
 	    
 	    <Row>
 		<Col>
+		    <br/>
 		    <h3>More movies of the same genre:</h3>
+		    
+		    <div>{movieViewContent.genre.description}</div>
 		    
 		    <br/>
 		    
 		    <Row>
-			{
-			    similarMovies.map((movie) => (
-				
-				// display cards
-				
-				// "mb" stands for "margin bottom"
-				// "md" stands for "medium"
-				// i.e. take up 3 shares of 12
-				
-				<Col className="mb-1"
-				     key={movie.id}
-				     md={4} sm={6} xs={6}>
-				    <MovieCard movieCardContent={movie} />
-				</Col>
-			    ))}
+			{ similarMovies.length === 0
+			  ? ( <Col className="mb-4">
+				  <em>Seems like this is the only {movieViewContent.genre.name} movie in the database right now.</em>
+			      </Col> )
+			  : (
+			      similarMovies.map((movie) => (
+
+				  // display cards
+				  
+				  // "mb" stands for "margin bottom"
+				  // "md" stands for "medium"
+				  // i.e. take up 3 shares of 12
+				  
+				  <Col className="mb-4"
+				       key={movie.id}
+				       md={4} sm={6} xs={6}>
+				      <MovieCard movieCardContent={movie} />
+				  </Col>
+			      ))
+			  )
+			}
 		    </Row>
 		</Col>
 	    </Row>
